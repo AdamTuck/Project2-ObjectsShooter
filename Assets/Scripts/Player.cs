@@ -2,26 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player
+public class Player:PlayableObjects
 {
     private string nickName;
     private float speed;
 
-    public Health health = new Health();
-    public Weapon weapon;
-
-    public void Move (Vector3 direction)
+    private void Start()
     {
-        Debug.Log("Player moves");
+        Move();
     }
 
-    public void Shoot (Vector3 direction, float speed)
+    public override void Move ()
+    {
+        base.Move();
+        Debug.Log("local player movement");
+    }
+
+    public override void Shoot(Vector3 direction, float speed)
     {
         Debug.Log("Player shoots");
     }
 
-    public void Die ()
+    public override void Die()
     {
-        Debug.Log("Player dies");
+        base.Die();
     }
 }

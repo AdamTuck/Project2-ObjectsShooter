@@ -2,31 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy
+public class Enemy:PlayableObjects
 {
-    private string name;
     private float speed;
-    public Health health = new Health();
-    public Weapon weapon;
 
     private EnemyType enemyType;
 
-    public void Move (Transform target)
+    public override void Move ()
     {
 
     }
 
-    public void Shoot(Vector3 direction, float speed)
+    public override void Shoot(Vector3 direction, float speed)
     {
 
     }
 
-    public void Attack (float interval)
+    public override void Attack (float interval)
     {
         Debug.Log("Enemy " + name + ": attacking");
     }
     
-    public void Die()
+    public override void Die()
     {
         Debug.Log("Enemy " + name + ": has died");
     }
