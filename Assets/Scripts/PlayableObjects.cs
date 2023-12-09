@@ -2,29 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayableObjects : MonoBehaviour
+public abstract class PlayableObjects : MonoBehaviour, iDamageable
 {
-    public Health health = new Health();
+    public Health health;
     public Weapon weapon;
 
-    public virtual void Move()
+    public abstract void Move(Vector2 direction, Vector2 target);
+
+    // Polymorphism/method overloads
+    public virtual void Move (Vector2 direction)
     {
-        Debug.Log(name + " base movement");
-        Debug.Log("Callnig base move");
+
     }
 
-    public virtual void Shoot(Vector3 direction, float speed)
+    public virtual void Move (float speed)
     {
-        Debug.Log(name + " shooting " + direction + " with speed " + speed);
+
     }
 
-    public virtual void Attack(float interval)
-    {
-        Debug.Log(name + ": attacking");
-    }
+    public abstract void Shoot();
 
-    public virtual void Die()
-    {
-        Debug.Log(name + ": has died");
-    }
+    public abstract void Attack(float interval);
+
+    public abstract void Die();
+
+    public abstract void GetDamage(float damage);
 }

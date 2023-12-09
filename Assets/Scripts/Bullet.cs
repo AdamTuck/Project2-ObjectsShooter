@@ -2,18 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet
+public class Bullet : MonoBehaviour
 {
-    private float speed;
-    private float damage;
+    [SerializeField] private float speed;
+    [SerializeField] private float damage;
+
+    private string targetTag;
+
+    public void SetBullet(float _damage, string _targetTag, float _speed = 10)
+    {
+        this.damage = _damage;
+        this.targetTag = _targetTag;
+        this.speed = _speed;
+    }
+
+    private void Update()
+    {
+        Move();
+    }
 
     void Move ()
     {
-        Debug.Log("Bullet is moving");
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 
-    void Damage ()
+    void Damage (iDamageable damageable)
     {
-        Debug.Log("Damage dealt: " + damage);
+        if (damageable != null)
+        {
+            damageable.GetDamage(damage);
+            Debug.Log("Dealing " + damage + " damage");
+            GameManager.GetInstance().scoreManager.IncrementScore(1);
+            Destroy(gameObject);
+        }
+    }
+    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.gameObject.CompareTag(targetTag))
+            return;
+
+        Debug.Log("Bullet hit " + collision.gameObject.name);
+
+        iDamageable damageable = collision.GetComponent<iDamageable>();
+        Damage(damageable);
     }
 }
