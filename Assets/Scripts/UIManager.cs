@@ -5,34 +5,96 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private TMP_Text txtHealth, txtScore;
-    [SerializeField] Player player;
+    [Header("Gameplay")]
+    [SerializeField] private TMP_Text txtHealth;
+    [SerializeField] private TMP_Text txtScore;
+    [SerializeField] private TMP_Text txtHighScore;
+    [SerializeField] private TMP_Text txtLevel;
+    [SerializeField] private GameObject txtLevelObj;
+    [SerializeField] private float levelTextTimeout;
+
+    [Header("Menu")]
+    [SerializeField] private GameObject menuCanvas;
+    [SerializeField] private GameObject lblGameOver;
+    [SerializeField] private TMP_Text txtMenuHighScore;
+    [SerializeField] private GameObject fireworksObj;
+
+    private Player player;
+    private ScoreManager scoreManager;
+
+    private float levelTextTimer;
+    private bool levelTextShowing;
 
     // Start is called before the first frame update
     void Start()
     {
-        player.OnHealthUpdate += UpdateHealth;
+        scoreManager = GameManager.GetInstance().scoreManager;
+
+        GameManager.GetInstance().OnGameStart += GameStarted;
+        GameManager.GetInstance().OnGameOver += GameOver;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    private void OnDisable()
-    {
-        // Unsubscribe from the action
-        player.OnHealthUpdate -= UpdateHealth;
+        LevelTextTimeout();
     }
 
     public void UpdateHealth(float currentHealth)
     {
-        txtHealth.SetText(currentHealth.ToString());
+        float roundedHealth = Mathf.Floor(currentHealth);
+        txtHealth.SetText(roundedHealth.ToString());
     }
 
     public void UpdateScore()
     {
-        txtScore.SetText(GameManager.GetInstance().scoreManager.GetScore().ToString());
+        txtScore.SetText(scoreManager.GetScore().ToString());
+    }
+
+    public void UpdateHighScore ()
+    {
+        txtHighScore.SetText(scoreManager.GetScore().ToString());
+        txtMenuHighScore.SetText($"High Score: {scoreManager.GetHighScore().ToString()}");
+    }
+
+    public void GameStarted ()
+    {
+        player = GameManager.GetInstance().GetPlayer();
+        player.health.OnHealthUpdate += UpdateHealth;
+
+        lblGameOver.SetActive(false);
+        menuCanvas.SetActive(false);
+        fireworksObj.SetActive(false);
+
+        ShowLevel(1);
+    }
+
+    public void GameOver()
+    {
+        lblGameOver.SetActive(true);
+        menuCanvas.SetActive(true);
+        fireworksObj.SetActive(true);
+    }
+
+    public void ShowLevel(int currentLevel)
+    {
+        txtLevel.SetText("LEVEL " + currentLevel);
+        txtLevelObj.SetActive(true);
+        levelTextShowing = true;
+    }
+
+    private void LevelTextTimeout()
+    {
+        if (levelTextShowing)
+        {
+            levelTextTimer += Time.deltaTime;
+
+            if (levelTextTimer > levelTextTimeout)
+            {
+                levelTextShowing = false;
+                levelTextTimer = 0;
+
+                txtLevelObj.SetActive(false);
+            }
+        }
     }
 }

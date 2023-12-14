@@ -17,6 +17,9 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameManager.GetInstance().IsPlaying())
+            return;
+
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
         lookTarget = Input.mousePosition;

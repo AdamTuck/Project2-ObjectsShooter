@@ -7,6 +7,7 @@ public class Player:PlayableObjects
 {
     private string nickName;
     [SerializeField] private float speed;
+
     [SerializeField] Camera cam;
 
     [SerializeField] private float weaponDamage = 1;
@@ -15,16 +16,20 @@ public class Player:PlayableObjects
 
     public Action<float> OnHealthUpdate;
 
+    public Action OnDeath;
+
     Rigidbody2D playerRB;
 
-    private void Start()
+    private void Awake()
     {
         playerRB = GetComponent<Rigidbody2D>();
         health = new Health(100,0.5f,100);
 
         weapon = new Weapon("Peashooter", weaponDamage, bulletSpeed);
 
-        OnHealthUpdate?.Invoke(health.GetHealth());
+        cam = Camera.main;
+
+        //OnHealthUpdate?.Invoke(health.GetHealth());
     }
 
     private void Update()
@@ -46,7 +51,6 @@ public class Player:PlayableObjects
 
     public override void Shoot()
     {
-        Debug.Log("Player shoots a bullet");
         weapon.Shoot(bulletPrefab, this, "Enemy");
     }
 
@@ -69,7 +73,16 @@ public class Player:PlayableObjects
 
     public override void Die()
     {
-        Debug.Log("Player has died");
+        OnDeath?.Invoke();
+        
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Pickup")
+        {
+            other.GetComponentInParent<Pickup>().OnPicked();
+        }
     }
 }

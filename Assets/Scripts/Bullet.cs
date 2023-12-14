@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
         {
             damageable.GetDamage(damage);
             Debug.Log("Dealing " + damage + " damage");
-            GameManager.GetInstance().scoreManager.IncrementScore(1);
+
             Destroy(gameObject);
         }
     }

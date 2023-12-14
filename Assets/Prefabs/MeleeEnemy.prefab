@@ -100,7 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18df7268ab25324f991e2de0e288a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2
+  deathExplosion: {fileID: 1589471916088158683, guid: a5a36479c04f4b34ea4291ebc876385b, type: 3}
   attackRange: 0
   attackTime: 0
   lightningObject: {fileID: 1122674355892362375}

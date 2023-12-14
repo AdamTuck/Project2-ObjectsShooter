@@ -6,8 +6,10 @@ using System;
 public class Enemy:PlayableObjects
 {
     GameManager gameManager;
+
     //private float name;
     [SerializeField] protected float speed;
+    [SerializeField] private GameObject deathExplosion;
     protected Transform target;
 
     private EnemyType enemyType;
@@ -77,6 +79,7 @@ public class Enemy:PlayableObjects
     {
         health.DeductHealth(damage);
 
+        GameManager.GetInstance().scoreManager.IncrementScore(1);
         if (health.GetHealth() <= 0)
         {
             Die();
@@ -90,7 +93,15 @@ public class Enemy:PlayableObjects
 
     public override void Die()
     {
+        gameManager.NotifyDeath(this);
+        DeathExplosion();
         Destroy(gameObject);
+    }
+
+    private void DeathExplosion()
+    {
+        GameObject deathExplosionInstance = Instantiate(deathExplosion, this.transform.position, Quaternion.identity);
+        Destroy(deathExplosionInstance, 5);
     }
 
     // EXAMPLE OF BUILT-IN ENUM
