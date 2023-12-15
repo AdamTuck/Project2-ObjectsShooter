@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateHighScore ()
     {
-        txtHighScore.SetText(scoreManager.GetScore().ToString());
+        txtHighScore.SetText(scoreManager.GetHighScore().ToString());
         txtMenuHighScore.SetText($"High Score: {scoreManager.GetHighScore().ToString()}");
     }
 
