@@ -13,6 +13,7 @@ public class Player:PlayableObjects
     [SerializeField] private float weaponDamage = 1;
     [SerializeField] private float bulletSpeed = 10;
     [SerializeField] private Bullet bulletPrefab;
+    [SerializeField] private GameObject gunTimerPrefab;
 
     public Action<float> OnHealthUpdate;
 
@@ -29,12 +30,18 @@ public class Player:PlayableObjects
 
         cam = Camera.main;
 
+        SetGunTimer(0f);
         //OnHealthUpdate?.Invoke(health.GetHealth());
     }
 
     private void Update()
     {
         health.RegenHealth();
+    }
+
+    public void SetGunTimer(float gunTimerSize)
+    {
+        gunTimerPrefab.transform.localScale = new Vector3(gunTimerSize, 1, 1);
     }
 
     public override void Move(Vector2 direction, Vector2 target)

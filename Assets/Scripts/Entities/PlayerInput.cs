@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    private PowerupManager powerupManager;
     private Player player;
     private float horizontal, vertical;
     private Vector2 lookTarget;
+
+    public bool gunActive;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GetComponent<Player>();
+        powerupManager = FindObjectOfType<PowerupManager>();
     }
 
     // Update is called once per frame
@@ -24,7 +28,15 @@ public class PlayerInput : MonoBehaviour
         vertical = Input.GetAxis("Vertical");
         lookTarget = Input.mousePosition;
 
-        if (Input.GetMouseButtonDown(0))
+        if (powerupManager.IsGunActive() && Input.GetMouseButton(0))
+        {
+            player.Shoot();
+        }
+        else if (Input.GetMouseButtonDown(1))
+        {
+            powerupManager.NukeScreen();
+        }
+        else if (Input.GetMouseButtonDown(0))
         {
             player.Shoot();
         }

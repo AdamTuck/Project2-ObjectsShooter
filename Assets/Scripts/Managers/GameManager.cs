@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     LevelLoader levelLoader;
     PickupSpawner pickupSpawner;
     UIManager uiManager;
+    PowerupManager powerupManager;
 
     private static GameManager instance;
     public ScoreManager scoreManager;
@@ -68,6 +69,7 @@ public class GameManager : MonoBehaviour
         scoreManager = FindObjectOfType<ScoreManager>();
         pickupSpawner = FindObjectOfType<PickupSpawner>();
         uiManager = FindObjectOfType<UIManager>();
+        powerupManager = FindObjectOfType<PowerupManager>();
     }
 
     public bool IsPlaying()
@@ -149,6 +151,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
         isPlaying = false;
 
+        powerupManager.ResetPowerups();
         WipeScreen();
 
         OnGameOver?.Invoke();
@@ -158,13 +161,14 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
 
+        powerupManager.ResetPowerups();
         isEnemySpawning = true;
         StartCoroutine(EnemySpawner());
 
         OnGameStart?.Invoke();
     }
 
-    private static void WipeScreen()
+    public void WipeScreen()
     {
         // Delete all enemies
         foreach (Enemy item in FindObjectsOfType(typeof(Enemy)))
@@ -191,6 +195,7 @@ public class GameManager : MonoBehaviour
         if (currentLevelTimer >= levelLength)
         {
             WipeScreen();
+            
             currentLevel++;
             currentLevelTimer = 0;
             enemySpawnRate += 0.1f * difficultyLevel;

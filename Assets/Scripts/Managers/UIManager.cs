@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text txtLevel;
     [SerializeField] private GameObject txtLevelObj;
     [SerializeField] private float levelTextTimeout;
+    [SerializeField] private TMP_Text txtNuke;
 
     [Header("Menu")]
     [SerializeField] private GameObject menuCanvas;
@@ -80,6 +81,11 @@ public class UIManager : MonoBehaviour
         txtLevel.SetText("LEVEL " + currentLevel);
         txtLevelObj.SetActive(true);
         levelTextShowing = true;
+    }
+
+    public void UpdateNukeText (float nukeAmount)
+    {
+        txtNuke.SetText (nukeAmount.ToString());
     }
 
     private void LevelTextTimeout()

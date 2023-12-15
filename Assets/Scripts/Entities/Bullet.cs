@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
         if (damageable != null)
         {
             damageable.GetDamage(damage);
-            Debug.Log("Dealing " + damage + " damage");
+            //Debug.Log("Dealing " + damage + " damage");
 
             Destroy(gameObject);
         }
@@ -42,7 +42,7 @@ public class Bullet : MonoBehaviour
         if (!collision.gameObject.CompareTag(targetTag))
             return;
 
-        Debug.Log("Bullet hit " + collision.gameObject.name);
+        //Debug.Log("Bullet hit " + collision.gameObject.name);
 
         iDamageable damageable = collision.GetComponent<iDamageable>();
         Damage(damageable);
