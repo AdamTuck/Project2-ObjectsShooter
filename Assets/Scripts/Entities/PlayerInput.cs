@@ -40,6 +40,10 @@ public class PlayerInput : MonoBehaviour
         {
             player.Shoot();
         }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameManager.GetInstance().PauseGame();
+        }
     }
 
     private void FixedUpdate()

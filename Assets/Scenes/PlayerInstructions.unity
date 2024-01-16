@@ -151,17 +151,17 @@ RectTransform:
   m_GameObject: {fileID: 34261948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 586625221}
   m_Father: {fileID: 1204867724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 579, y: -660}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -20, y: 20}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 1}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &34261950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,17 +554,17 @@ RectTransform:
   m_GameObject: {fileID: 302780972}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 250925397}
   m_Father: {fileID: 1204867724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 390, y: -660}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -220, y: 20}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 1}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &302780974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -874,6 +874,7 @@ GameObject:
   - component: {fileID: 668701709}
   - component: {fileID: 668701711}
   - component: {fileID: 668701710}
+  - component: {fileID: 668701712}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -890,7 +891,7 @@ RectTransform:
   m_GameObject: {fileID: 668701708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.59347, y: 0.59347, z: 0.59347}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1204867724}
@@ -938,6 +939,29 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668701708}
   m_CullTransparentMesh: 1
+--- !u!223 &668701712
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668701708}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &737472721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,16 +1033,16 @@ RectTransform:
   m_GameObject: {fileID: 961848832}
   m_LocalRotation: {x: 0, y: 0, z: 0.86602545, w: 0.49999994}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.54035, y: 0.54035, z: 0.54035}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1204867724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 120}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 237, y: -445}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -270, y: -128}
   m_SizeDelta: {x: 286.86, y: 424.74915}
-  m_Pivot: {x: 0.5, y: 1}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &961848834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1105,7 +1129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1193,17 +1217,17 @@ RectTransform:
   m_GameObject: {fileID: 1566907410}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 166093242}
   m_Father: {fileID: 1204867724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 200, y: -660}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -120, y: 20}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 1}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &1566907412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1332,7 +1356,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -45, y: -13}
+  m_AnchoredPosition: {x: 0, y: -10}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1585316684
@@ -1389,7 +1413,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1418,7 +1442,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -110.61554, w: 0}
+  m_margin: {x: -300.14288, y: 0, z: -301.09085, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1603,7 +1627,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 2, y: -50}
+  m_AnchoredPosition: {x: 30, y: -60}
   m_SizeDelta: {x: 1425, y: 713.1599}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1974667421
@@ -1626,16 +1650,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Player:\r\n\nThe player controls a starship, which can move horizontally
-    and vertically across the screen.\r\n\r\nObjective: To kill all enemies, Scores
-    will be based on how many enemies you kill.\r\n\nScores: Each eliminated enemy
-    is worth 1 point.\r\n\nTo Move:\r\nA to move left\r\nD to move right\r\nS to
-    move backward\r\nW to move forward\r\n\r\nTo Shoot:\r\nThe player can directly
-    control the shooting of the gun.\r\nLeft click to shoot the gun\r\nRight-click
-    to nuke (if there is a nuke in your inventory).\r\n\nGame over\r:\nWhen the player
-    loses all their health, a game over screen is displayed within the playfield.
-    If the player's score is higher than the stored high score, the new high score
-    is stored.  After the player hits any key, the game is reset to the title screen.\r\n\n"
+  m_text: "The player controls a starship, which can move horizontally and vertically
+    across the screen.\r\n\r\nObjective: To kill all enemies, Scores will be based
+    on how many enemies you kill.\r\n\nScores: Each eliminated enemy is worth 1 point.\r\n\nTo
+    Move:\r\nA to move left\r\nD to move right\r\nS to move backward\r\nW to move
+    forward\r\n\r\nTo Shoot:\r\nThe player can directly control the shooting of the
+    gun.\r\nLeft click to shoot the gun\r\nRight-click to nuke (if there is a nuke
+    in your inventory).\r\n\nGame over\r:\nWhen the player loses all their health,
+    a game over screen is displayed within the playfield. If the player's score is
+    higher than the stored high score, the new high score is stored.  After the player
+    hits any key, the game is reset to the title screen.\r\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1662,8 +1686,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
+  m_fontSize: 11
+  m_fontSizeBase: 11
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1698,7 +1722,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 22.287415, z: 0, w: 51.739594}
+  m_margin: {x: 310.7528, y: -1.731292, z: 365.11655, w: 420.72885}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private Player player;
 
     private bool isPlaying;
+    private bool isPaused;
 
     public Action OnGameStart, OnGameOver;
 
@@ -54,7 +55,11 @@ public class GameManager : MonoBehaviour
 
         instance = this;
 
+        Time.timeScale = 1;
+
         currentLevel = 1;
+
+        StartGame();
     }
 
     private void Update()
@@ -99,17 +104,21 @@ public class GameManager : MonoBehaviour
     {
         tempEnemy = Instantiate(sniperEnemyPrefab);
         tempEnemy.transform.position = spawnPositions[UnityEngine.Random.Range(0, spawnPositions.Length)].position;
-
+        
         tempEnemy.GetComponent<Enemy>().weapon = sniperWeapon;
         tempEnemy.GetComponent<SniperEnemy>().SetSniperEnemy(15, 4f);
     }
 
     IEnumerator EnemySpawner ()
     {
-        while(isEnemySpawning)
+        while (true)
         {
             yield return new WaitForSeconds(1.0f / enemySpawnRate);
-            ChooseEnemyToSpawn();
+
+            if (isEnemySpawning)
+            { 
+                ChooseEnemyToSpawn();
+            }
         }
     }
 
@@ -145,6 +154,22 @@ public class GameManager : MonoBehaviour
         StartCoroutine(GameStopper());
     }
 
+    public void PauseGame()
+    {
+        if (!isPaused)
+        {
+            isPaused = true;
+            uiManager.ShowPauseScreen();
+            Time.timeScale = 0;
+        }
+        else
+        {
+            isPaused = false;
+            uiManager.HidePauseScreen();
+            Time.timeScale = 1;
+        } 
+    }
+
     IEnumerator GameStopper()
     {
         isEnemySpawning = false;
@@ -159,7 +184,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator GameStarter()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(0f);
 
         powerupManager.ResetPowerups();
         isEnemySpawning = true;
@@ -173,10 +198,10 @@ public class GameManager : MonoBehaviour
         // Delete all enemies
         foreach (Enemy item in FindObjectsOfType(typeof(Enemy)))
         {
-            Destroy(item.gameObject);
+            item.Die();
         }
 
-        foreach (Pickup item in FindObjectsOfType(typeof(Pickup)))
+        foreach(Pickup item in FindObjectsOfType(typeof(Pickup)))
         {
             Destroy(item.gameObject);
         }
@@ -190,18 +215,38 @@ public class GameManager : MonoBehaviour
     private void LevelManager()
     {
         if (isPlaying)
+        {
             currentLevelTimer += Time.deltaTime;
 
-        if (currentLevelTimer >= levelLength)
-        {
-            WipeScreen();
-            
-            currentLevel++;
-            currentLevelTimer = 0;
-            enemySpawnRate += 0.1f * difficultyLevel;
+            if (currentLevelTimer >= levelLength)
+            {
+                isEnemySpawning = false;
+                int enemyCount = 0;
 
-            uiManager.ShowLevel(currentLevel);
+                foreach (Enemy item in FindObjectsOfType(typeof(Enemy)))
+                {
+                    enemyCount++;
+                }
+
+                if (enemyCount <= 0 || currentLevelTimer >= levelLength + 30.0f)
+                {
+                    EndLevel();
+                }
+            }
         }
+    }
+
+    private void EndLevel()
+    {
+        WipeScreen();
+
+        currentLevel++;
+        currentLevelTimer = 0;
+        enemySpawnRate += 0.1f * difficultyLevel;
+
+        isEnemySpawning = true;
+
+        uiManager.ShowLevel(currentLevel);
     }
 
     private void ChooseEnemyToSpawn ()

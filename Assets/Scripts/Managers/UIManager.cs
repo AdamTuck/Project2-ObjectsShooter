@@ -20,6 +20,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text txtMenuHighScore;
     [SerializeField] private GameObject fireworksObj;
 
+    [Header("Pause")]
+    [SerializeField] private GameObject pauseCanvas;
+
     private Player player;
     private ScoreManager scoreManager;
 
@@ -67,6 +70,16 @@ public class UIManager : MonoBehaviour
         fireworksObj.SetActive(false);
 
         ShowLevel(1);
+    }
+
+    public void ShowPauseScreen()
+    {
+        pauseCanvas.SetActive(true);
+    }
+
+    public void HidePauseScreen()
+    {
+        pauseCanvas.SetActive(false);
     }
 
     public void GameOver()
