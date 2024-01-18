@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 231641530}
   - component: {fileID: 231641529}
   m_Layer: 5
-  m_Name: PowerupPickup
+  m_Name: GunPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Powerup Pickup
+  m_text: Gun Pickup
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -510,7 +510,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -114.40289, w: 0}
+  m_margin: {x: 0, y: 0, z: -26.158676, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -850,7 +850,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'EnemyTypes
+  m_text: 'Enemy Types
 
 '
   m_isRightToLeft: 0
@@ -1897,7 +1897,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Health Pack\r\nRestores 5-20% of player health\r\n\nPower up Pickup\r\nAllows
+  m_text: "Health Pack\r\nRestores 5-20% of player health\r\n\nGun Pickup\r\nAllows
     the player to rapidly increase the fire rate of their gun\r\n\nNuke\r\nWipes
     all enemies in the playfield\r\nWhen picked up it will be stored in your inventory.
     \r\n"
@@ -1989,7 +1989,7 @@ GameObject:
   - component: {fileID: 1976006954}
   - component: {fileID: 1976006953}
   m_Layer: 5
-  m_Name: PowerupPickup
+  m_Name: GunPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

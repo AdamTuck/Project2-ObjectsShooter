@@ -5,7 +5,6 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
-    LevelLoader levelLoader;
     PickupSpawner pickupSpawner;
     UIManager uiManager;
     PowerupManager powerupManager;
@@ -67,10 +66,8 @@ public class GameManager : MonoBehaviour
         LevelManager();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        levelLoader = FindObjectOfType<LevelLoader>();
         scoreManager = FindObjectOfType<ScoreManager>();
         pickupSpawner = FindObjectOfType<PickupSpawner>();
         uiManager = FindObjectOfType<UIManager>();

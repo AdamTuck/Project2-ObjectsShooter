@@ -28,8 +28,11 @@ public class MeleeEnemy : Enemy
     {
         base.Update();
 
-        if(!target)
+        if(!target || !GameManager.GetInstance().IsPlaying())
+        {
+            lightningObject.SetActive(false);
             return;
+        }
 
         if (Vector2.Distance(transform.position, target.position) < attackRange)
         {

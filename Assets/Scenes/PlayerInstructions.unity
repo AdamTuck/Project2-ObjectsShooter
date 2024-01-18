@@ -159,7 +159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -20, y: 20}
+  m_AnchoredPosition: {x: -120, y: 20}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &34261950
@@ -1225,7 +1225,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -120, y: 20}
+  m_AnchoredPosition: {x: -20, y: 20}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1566907412
@@ -1654,12 +1654,11 @@ MonoBehaviour:
     across the screen.\r\n\r\nObjective: To kill all enemies, Scores will be based
     on how many enemies you kill.\r\n\nScores: Each eliminated enemy is worth 1 point.\r\n\nTo
     Move:\r\nA to move left\r\nD to move right\r\nS to move backward\r\nW to move
-    forward\r\n\r\nTo Shoot:\r\nThe player can directly control the shooting of the
-    gun.\r\nLeft click to shoot the gun\r\nRight-click to nuke (if there is a nuke
-    in your inventory).\r\n\nGame over\r:\nWhen the player loses all their health,
-    a game over screen is displayed within the playfield. If the player's score is
-    higher than the stored high score, the new high score is stored.  After the player
-    hits any key, the game is reset to the title screen.\r\n\n"
+    forward\r\nESC to pause/resume\n\r\nTo Shoot:\r\nLeft click to shoot the gun\r\nRight-click
+    to nuke (if there is a nuke in your inventory).\r\n\nGame over\r:\nWhen the player
+    loses all their health, a game over screen is displayed within the playfield.
+    If the player's score is higher than the stored high score, the new high score
+    is stored.  After the player hits any key, the game is reset to the title screen.\r\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
