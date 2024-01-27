@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
 
     private Player player;
     private ScoreManager scoreManager;
+    private SoundManager soundManager;
 
     private float levelTextTimer;
     private bool levelTextShowing;
@@ -33,6 +34,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         scoreManager = GameManager.GetInstance().scoreManager;
+        soundManager = GameManager.GetInstance().soundManager;
 
         GameManager.GetInstance().OnGameStart += GameStarted;
         GameManager.GetInstance().OnGameOver += GameOver;

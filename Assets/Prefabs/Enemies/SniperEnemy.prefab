@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  deathExplosion: {fileID: 1589471916088158683, guid: a5a36479c04f4b34ea4291ebc876385b, type: 3}
+  deathExplosion: {fileID: 8053993024071699815, guid: 99cfa789e664d4d448b50782b550f1b8, type: 3}
   attackRange: 25
   attackTime: 8
   bulletPrefab: {fileID: 1651142959868189721, guid: af16155bccdfe45428ef80ae8610a024, type: 3}

@@ -20,10 +20,13 @@ public class Player:PlayableObjects
     public Action OnDeath;
 
     Rigidbody2D playerRB;
+    SoundManager soundManager;
 
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody2D>();
+        soundManager = GameManager.GetInstance().soundManager;
+
         health = new Health(100,0.5f,100);
 
         weapon = new Weapon("Peashooter", weaponDamage, bulletSpeed);
@@ -59,6 +62,7 @@ public class Player:PlayableObjects
     public override void Shoot()
     {
         weapon.Shoot(bulletPrefab, this, "Enemy");
+        soundManager.PlaySound("shootGun");
     }
 
     public override void Attack(float interval)

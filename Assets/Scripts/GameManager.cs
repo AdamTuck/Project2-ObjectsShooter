@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     private static GameManager instance;
     public ScoreManager scoreManager;
+    public SoundManager soundManager;
     private Player player;
 
     private bool isPlaying;
@@ -54,6 +55,12 @@ public class GameManager : MonoBehaviour
 
         instance = this;
 
+        scoreManager = FindObjectOfType<ScoreManager>();
+        pickupSpawner = FindObjectOfType<PickupSpawner>();
+        uiManager = FindObjectOfType<UIManager>();
+        powerupManager = FindObjectOfType<PowerupManager>();
+        soundManager = FindObjectOfType<SoundManager>();
+
         Time.timeScale = 1;
 
         currentLevel = 1;
@@ -64,14 +71,6 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         LevelManager();
-    }
-
-    void Start()
-    {
-        scoreManager = FindObjectOfType<ScoreManager>();
-        pickupSpawner = FindObjectOfType<PickupSpawner>();
-        uiManager = FindObjectOfType<UIManager>();
-        powerupManager = FindObjectOfType<PowerupManager>();
     }
 
     public bool IsPlaying()
@@ -142,11 +141,14 @@ public class GameManager : MonoBehaviour
 
         OnGameStart?.Invoke();
         StartCoroutine(GameStarter());
+        soundManager.PlaySound("gameMusic");
     }
 
     public void StopGame()
     {
         scoreManager.SetHighScore();
+        soundManager.PlaySound("gameOver");
+        soundManager.PlaySound("gameMusicStinger");
 
         StartCoroutine(GameStopper());
     }
@@ -240,6 +242,8 @@ public class GameManager : MonoBehaviour
         currentLevel++;
         currentLevelTimer = 0;
         enemySpawnRate += 0.1f * difficultyLevel;
+
+        soundManager.PlaySound("nextLevel");
 
         isEnemySpawning = true;
 

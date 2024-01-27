@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4451024376406813408}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.88, y: 1.82, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0035436, y: 1.0035436, z: 1.0035436}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
-  deathExplosion: {fileID: 1589471916088158683, guid: a5a36479c04f4b34ea4291ebc876385b, type: 3}
+  deathExplosion: {fileID: 8053993024071699815, guid: 99cfa789e664d4d448b50782b550f1b8, type: 3}
   attackRange: 15
   attackTime: 0.2
   bulletPrefab: {fileID: 1651142959868189721, guid: af16155bccdfe45428ef80ae8610a024, type: 3}

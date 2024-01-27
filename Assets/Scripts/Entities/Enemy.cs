@@ -6,6 +6,7 @@ using System;
 public class Enemy:PlayableObjects
 {
     GameManager gameManager;
+    SoundManager soundManager;
 
     //private float name;
     [SerializeField] protected float speed;
@@ -16,7 +17,7 @@ public class Enemy:PlayableObjects
 
     protected virtual void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        soundManager = GameManager.GetInstance().soundManager;
 
         try
         {
@@ -24,7 +25,7 @@ public class Enemy:PlayableObjects
         }
         catch (NullReferenceException e)
         {
-            gameManager.StopEnemySpawning();
+            GameManager.GetInstance().StopEnemySpawning();
             Debug.Log(e);
         }   
     }
@@ -93,13 +94,14 @@ public class Enemy:PlayableObjects
 
     public override void Die()
     {
-        gameManager.NotifyDeath(this);
+        GameManager.GetInstance().NotifyDeath(this);
         DeathExplosion();
         Destroy(gameObject);
     }
 
     private void DeathExplosion()
     {
+        soundManager.PlaySound("enemyDeath");
         GameObject deathExplosionInstance = Instantiate(deathExplosion, this.transform.position, Quaternion.identity);
         Destroy(deathExplosionInstance, 5);
     }

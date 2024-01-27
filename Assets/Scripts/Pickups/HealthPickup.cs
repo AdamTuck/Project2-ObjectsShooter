@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class HealthPickup : Pickup
 {
+    PowerupManager powerupManager;
     [SerializeField] private float minHealthAdded, maxHealthAdded;
+    private void Start()
+    {
+        powerupManager = FindObjectOfType<PowerupManager>();
+    }
 
     public override void OnPicked()
     {
@@ -14,5 +19,7 @@ public class HealthPickup : Pickup
 
         var player = GameManager.GetInstance().GetPlayer();
         player.health.AddHealth(healthAdded);
+
+        powerupManager.GiveHealth();
     }
 }

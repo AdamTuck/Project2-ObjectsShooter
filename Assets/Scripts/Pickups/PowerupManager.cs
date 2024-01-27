@@ -5,11 +5,13 @@ using UnityEngine;
 public class PowerupManager : MonoBehaviour
 {
     UIManager uiManager;
+    SoundManager soundManager;
 
     //[Header("Gun Powerup")]
     [SerializeField] private float gunPowerupLength;
-    private float gunTimer;
-    private bool gunActive;
+    [SerializeField] private float gunBulletDelay;
+    private float gunBulletTimer, gunTimer;
+    private bool gunActive, gunBulletReady;
 
     private float gunTimerBarSize;
 
@@ -21,6 +23,7 @@ public class PowerupManager : MonoBehaviour
     private void Start()
     {
         uiManager = FindObjectOfType<UIManager>();
+        soundManager = GameManager.GetInstance().soundManager;
     }
 
     private void Update()
@@ -32,6 +35,7 @@ public class PowerupManager : MonoBehaviour
     {
         gunTimer = gunPowerupLength;
         gunActive = true;
+        soundManager.PlaySound("powerupGet");
     }
 
     private void TimeOutGun()
@@ -39,6 +43,7 @@ public class PowerupManager : MonoBehaviour
         if (gunActive)
         {
             gunTimer -= Time.deltaTime;
+            gunBulletTimer += Time.deltaTime;
 
             gunTimerBarSize = gunTimer / gunPowerupLength;
 
@@ -49,18 +54,38 @@ public class PowerupManager : MonoBehaviour
                 gunActive = false;
                 GameManager.GetInstance().GetPlayer().SetGunTimer(0);
             }
+
+            if (gunBulletTimer >= gunBulletDelay)
+            {
+                gunBulletTimer = 0;
+                gunBulletReady = true;
+            }
         }
     }
 
     public bool IsGunActive()
     {
-        return gunActive;
+        bool willGunShoot = false;
+
+        if (gunActive && gunBulletReady)
+        {
+            gunBulletReady = false;
+            willGunShoot = true;
+        }
+
+        return willGunShoot;
+    }
+
+    public void GiveHealth() 
+    {
+        soundManager.PlaySound("powerupGet");
     }
 
     public void GetNuke()
     {
         nukesAcquired++;
         uiManager.UpdateNukeText(nukesAcquired);
+        soundManager.PlaySound("powerupGet");
     }
 
     public int NukesAcquired()
@@ -74,6 +99,8 @@ public class PowerupManager : MonoBehaviour
         { 
             nukesAcquired--;
             uiManager.UpdateNukeText(nukesAcquired);
+
+            soundManager.PlaySound("powerupNuke");
 
             GameObject nukeExplosionInstance = Instantiate(explosionObject, GameManager.GetInstance().GetPlayer().transform.position, Quaternion.identity);
 
